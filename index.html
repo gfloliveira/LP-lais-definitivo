@@ -976,7 +976,7 @@
     }
 
     .trat__card {
-      background: var(--color-bg);
+      background: #EDE8DC;
       position: relative;
       overflow: hidden;
       padding: 48px 40px 44px;
@@ -986,7 +986,7 @@
       flex-direction: column;
     }
 
-    /* borda dourada no hover — via outline pseudo */
+    /* borda dourada no hover — excluindo o card featured */
     .trat__card::after {
       content: '';
       position: absolute;
@@ -997,7 +997,7 @@
       z-index: 3;
     }
 
-    .trat__card:hover::after {
+    .trat__card:not(.trat__card--featured):hover::after {
       border-color: var(--color-gold);
     }
 
@@ -1008,8 +1008,26 @@
       font-weight: 300;
       color: var(--color-text-light);
       letter-spacing: 0.1em;
-      margin-bottom: 28px;
+      margin-bottom: 14px;
       display: block;
+      transition: color 0.35s var(--ease-smooth),
+                  transform 0.4s var(--ease-elegant);
+      transform-origin: left center;
+    }
+
+    .trat__card:not(.trat__card--featured):hover .trat__card-num {
+      color: var(--color-gold);
+      transform: scale(1.12);
+    }
+
+    /* linha dourada animada entre número e nome */
+    .trat__card-line {
+      width: 32px;
+      height: 1px;
+      background: var(--color-gold);
+      margin-bottom: 20px;
+      transform: scaleX(0);
+      transform-origin: left;
     }
 
     .trat__card-name {
@@ -1029,6 +1047,79 @@
       line-height: 1.6;
       margin-top: auto;
     }
+
+    /* — card 06 featured: full-width, fundo escuro */
+    .trat__card--featured {
+      grid-column: 1 / -1;
+      background: var(--color-bg-dark);
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 80px;
+      min-height: 220px;
+      padding: 60px 64px;
+      cursor: default;
+    }
+
+    .trat__card--featured .trat__card-num {
+      color: rgba(176, 168, 152, 0.35);
+      margin-bottom: 12px;
+    }
+
+    .trat__card--featured .trat__card-line {
+      background: rgba(197, 160, 89, 0.45);
+    }
+
+    .trat__card--featured .trat__card-name {
+      color: var(--color-bg);
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    }
+
+    .trat__feat-left  { flex: 1; max-width: 400px; }
+
+    .trat__feat-tagline {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--color-text-light);
+      margin-top: 14px;
+      line-height: 1.65;
+    }
+
+    .trat__feat-right {
+      flex: 1;
+      max-width: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .trat__feat-desc {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(250, 249, 246, 0.6);
+    }
+
+    .trat__feat-cta {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-bg-dark);
+      background: var(--color-gold);
+      text-decoration: none;
+      padding: 16px 36px;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.35s var(--ease-smooth);
+    }
+
+    .trat__feat-cta:hover { background: var(--color-gold-light); }
 
     /* — overlay de hover (desktop) */
     .trat__card-overlay {
@@ -1137,6 +1228,7 @@
     @media (max-width: 1024px) {
       .trat { padding: 100px 0 60px; }
       .trat__card { padding: 40px 32px 36px; min-height: 260px; }
+      .trat__card--featured { gap: 48px; padding: 48px 40px; }
     }
 
     @media (max-width: 768px) {
@@ -1154,6 +1246,19 @@
         min-height: auto;
         padding: 32px 24px;
       }
+
+      .trat__card--featured {
+        grid-column: 1 / -1;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 40px 28px;
+      }
+
+      .trat__feat-left,
+      .trat__feat-right { max-width: 100%; }
+
+      .trat__feat-cta { width: 100%; justify-content: center; }
 
       .trat__card-body {
         display: block;
@@ -1407,6 +1512,7 @@
         <!-- 01 -->
         <div class="trat__card">
           <span class="trat__card-num">01</span>
+          <div class="trat__card-line"></div>
           <h3 class="trat__card-name">Limpeza de Pele Profunda</h3>
           <p class="trat__card-tagline">Extração manual + alta frequência + máscara enzimática</p>
           <div class="trat__card-overlay">
@@ -1431,6 +1537,7 @@
         <!-- 02 -->
         <div class="trat__card">
           <span class="trat__card-num">02</span>
+          <div class="trat__card-line"></div>
           <h3 class="trat__card-name">Peeling Químico</h3>
           <p class="trat__card-tagline">Ácidos de alta performance + neutralização controlada</p>
           <div class="trat__card-overlay">
@@ -1454,6 +1561,7 @@
         <!-- 03 -->
         <div class="trat__card">
           <span class="trat__card-num">03</span>
+          <div class="trat__card-line"></div>
           <h3 class="trat__card-name">Radiofrequência Facial</h3>
           <p class="trat__card-tagline">Tensionamento + estimulação de colágeno endógeno</p>
           <div class="trat__card-overlay">
@@ -1477,6 +1585,7 @@
         <!-- 04 -->
         <div class="trat__card">
           <span class="trat__card-num">04</span>
+          <div class="trat__card-line"></div>
           <h3 class="trat__card-name">Drenagem Linfática</h3>
           <p class="trat__card-tagline">Técnica Vodder + manobras de pressão gradual</p>
           <div class="trat__card-overlay">
@@ -1500,6 +1609,7 @@
         <!-- 05 -->
         <div class="trat__card">
           <span class="trat__card-num">05</span>
+          <div class="trat__card-line"></div>
           <h3 class="trat__card-name">Microagulhamento</h3>
           <p class="trat__card-tagline">Indução de colágeno + ativos de alta concentração</p>
           <div class="trat__card-overlay">
@@ -1520,26 +1630,21 @@
           </div>
         </div>
 
-        <!-- 06 -->
-        <div class="trat__card">
-          <span class="trat__card-num">06</span>
-          <h3 class="trat__card-name">Protocolo Personalizado</h3>
-          <p class="trat__card-tagline">Avaliação completa + combinação de técnicas sob medida</p>
-          <div class="trat__card-overlay">
-            <p class="trat__card-desc">
+        <!-- 06 — featured full-width -->
+        <div class="trat__card trat__card--featured">
+          <div class="trat__feat-left">
+            <span class="trat__card-num">06</span>
+            <div class="trat__card-line"></div>
+            <h3 class="trat__card-name">Protocolo Personalizado</h3>
+            <p class="trat__feat-tagline">Avaliação completa + combinação de técnicas sob medida</p>
+          </div>
+          <div class="trat__feat-right">
+            <p class="trat__feat-desc">
               Para quem busca resultado além do convencional. Análise
               aprofundada da pele, histórico e objetivos — seguida de
               um protocolo exclusivo que combina técnicas de forma sinérgica.
             </p>
-            <a href="#contato" class="trat__card-cta">Agendar avaliação</a>
-          </div>
-          <div class="trat__card-body">
-            <div class="trat__card-body-inner">
-              Análise aprofundada da pele e protocolo exclusivo que combina
-              técnicas de forma sinérgica para o seu objetivo específico.
-              <br>
-              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
-            </div>
+            <a href="#contato" class="trat__feat-cta">Agendar avaliação</a>
           </div>
         </div>
 
@@ -1699,6 +1804,12 @@
           scrollTrigger: { trigger: '.trat__grid', start: 'top 78%', toggleActions: 'play none none none' }
         }
       );
+
+      // Linhas douradas — scaleX 0→1, stagger suave
+      gsap.to('.trat__card-line', {
+        scaleX: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '.trat__grid', start: 'top 78%', toggleActions: 'play none none none' }
+      });
 
       // Strip fade
       gsap.to('.trat__strip', {
@@ -1862,6 +1973,8 @@
         '.trat__eyebrow-text', '.trat__headline-inner',
         '.trat__sub', '.trat__card', '.trat__strip'
       ], { opacity: 1, y: 0, x: 0 });
+
+      gsap.set('.trat__card-line', { scaleX: 1 });
 
       gsap.set('#heroEyebrowLine', { scaleX: 1 });
       gsap.set('.sobre__deco-line', { height: '90%' });
