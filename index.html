@@ -899,6 +899,301 @@
     @media (max-width: 480px) {
       .section__inner { padding: 0 20px; }
     }
+
+    /* ─── TRATAMENTOS ────────────────────────────────────────────── */
+    .trat {
+      background: var(--color-bg);
+      padding: 140px 0 80px;
+      overflow: hidden;
+    }
+
+    /* — header centrado */
+    .trat__header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .trat__eyebrow {
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .trat__eyebrow-text {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      transform: translateY(120%);
+    }
+
+    .trat__headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--color-text-dark);
+      margin-bottom: 20px;
+    }
+
+    .trat__headline-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .trat__headline-inner {
+      display: block;
+      transform: translateY(100%);
+    }
+
+    .trat__headline em {
+      font-style: italic;
+      color: var(--color-gold);
+      font-weight: 300;
+    }
+
+    .trat__sub {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* — grid de cards */
+    .trat__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(28, 26, 23, 0.08);
+      border: 1px solid rgba(28, 26, 23, 0.08);
+    }
+
+    .trat__card {
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+      padding: 48px 40px 44px;
+      cursor: pointer;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* borda dourada no hover — via outline pseudo */
+    .trat__card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      transition: border-color 0.4s var(--ease-smooth);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .trat__card:hover::after {
+      border-color: var(--color-gold);
+    }
+
+    /* número ordinal */
+    .trat__card-num {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--color-text-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .trat__card-name {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--color-text-dark);
+      margin-bottom: 14px;
+    }
+
+    .trat__card-tagline {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-top: auto;
+    }
+
+    /* — overlay de hover (desktop) */
+    .trat__card-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--color-bg-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 0.52s var(--ease-elegant);
+      z-index: 2;
+    }
+
+    .trat__card:hover .trat__card-overlay {
+      clip-path: inset(0% 0 0 0);
+    }
+
+    .trat__card-desc {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(250, 249, 246, 0.78);
+      margin-bottom: 28px;
+    }
+
+    .trat__card-cta {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: gap 0.3s var(--ease-smooth);
+    }
+
+    .trat__card-cta::after {
+      content: '→';
+      font-size: 0.9em;
+    }
+
+    .trat__card-cta:hover { gap: 18px; }
+
+    /* mobile: accordion (sem overlay) */
+    .trat__card-body {
+      display: none;
+    }
+
+    /* — strip de fechamento */
+    .trat__strip {
+      margin-top: 80px;
+      padding: 52px 0;
+      border-top: 1px solid rgba(28, 26, 23, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .trat__strip-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 2vw, 1.7rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--color-text-dark);
+    }
+
+    .trat__strip-text em {
+      color: var(--color-gold);
+      font-style: italic;
+    }
+
+    .btn-whatsapp {
+      flex-shrink: 0;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      text-decoration: none;
+      padding: 16px 32px;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--color-gold);
+      transition: background 0.35s var(--ease-smooth),
+                  color 0.35s var(--ease-smooth);
+    }
+
+    .btn-whatsapp:hover {
+      background: var(--color-gold);
+      color: var(--color-bg);
+    }
+
+    /* ─── TRATAMENTOS RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .trat { padding: 100px 0 60px; }
+      .trat__card { padding: 40px 32px 36px; min-height: 260px; }
+    }
+
+    @media (max-width: 768px) {
+      .trat { padding: 80px 0 60px; }
+      .trat__header { margin-bottom: 56px; }
+
+      .trat__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* No mobile: desativa overlay de hover, usa accordion */
+      .trat__card-overlay { display: none; }
+
+      .trat__card {
+        min-height: auto;
+        padding: 32px 24px;
+      }
+
+      .trat__card-body {
+        display: block;
+        overflow: hidden;
+        max-height: 0;
+      }
+
+      .trat__card-body-inner {
+        padding-top: 16px;
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        font-weight: 300;
+        line-height: 1.8;
+        color: var(--color-text-muted);
+      }
+
+      .trat__card-body-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 16px;
+        font-family: var(--font-sans);
+        font-size: 0.65rem;
+        font-weight: 400;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        text-decoration: none;
+      }
+
+      .trat__strip {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .trat__grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -1083,6 +1378,187 @@
     </div>
   </section>
 
+  <!-- TRATAMENTOS -->
+  <section class="trat" id="tratamentos">
+    <div class="section__inner">
+
+      <!-- Header centrado -->
+      <div class="trat__header">
+        <div class="trat__eyebrow">
+          <span class="trat__eyebrow-text">Protocolos &amp; Serviços</span>
+        </div>
+        <h2 class="trat__headline">
+          <span class="trat__headline-line">
+            <span class="trat__headline-inner">Cada tratamento,</span>
+          </span>
+          <span class="trat__headline-line">
+            <span class="trat__headline-inner">um protocolo <em>preciso.</em></span>
+          </span>
+        </h2>
+        <p class="trat__sub">
+          Desenvolvidos com base em evidências clínicas e adaptados
+          à singularidade de cada pele. Nenhum atendimento é igual ao anterior.
+        </p>
+      </div>
+
+      <!-- Grid de cards -->
+      <div class="trat__grid">
+
+        <!-- 01 -->
+        <div class="trat__card">
+          <span class="trat__card-num">01</span>
+          <h3 class="trat__card-name">Limpeza de Pele Profunda</h3>
+          <p class="trat__card-tagline">Extração manual + alta frequência + máscara enzimática</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Protocolo completo de limpeza com análise de pele, extração
+              profissional e finalização com ativo regenerador. Indicado para
+              todos os tipos de pele, com frequência mensal recomendada.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Protocolo completo com análise de pele, extração profissional
+              e finalização com ativo regenerador. Indicado para todos os
+              tipos de pele.
+              <br>
+              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="trat__card">
+          <span class="trat__card-num">02</span>
+          <h3 class="trat__card-name">Peeling Químico</h3>
+          <p class="trat__card-tagline">Ácidos de alta performance + neutralização controlada</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Renovação celular acelerada com seleção de ácido conforme
+              o biotipo e objetivo — manchas, textura, poros ou flacidez.
+              Protocolo sequenciado para resultado gradual e seguro.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Renovação celular com seleção de ácido conforme o biotipo.
+              Indicado para manchas, textura, poros ou flacidez.
+              <br>
+              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="trat__card">
+          <span class="trat__card-num">03</span>
+          <h3 class="trat__card-name">Radiofrequência Facial</h3>
+          <p class="trat__card-tagline">Tensionamento + estimulação de colágeno endógeno</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Tecnologia de calor profundo que estimula a produção natural
+              de colágeno e elastina. Efeito lifting progressivo sem
+              procedimento invasivo. Recomendado em séries de 6 a 10 sessões.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Estimulação de colágeno por calor profundo. Efeito lifting
+              progressivo, recomendado em séries de 6–10 sessões.
+              <br>
+              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="trat__card">
+          <span class="trat__card-num">04</span>
+          <h3 class="trat__card-name">Drenagem Linfática</h3>
+          <p class="trat__card-tagline">Técnica Vodder + manobras de pressão gradual</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Manobras manuais suaves que estimulam o sistema linfático,
+              reduzem retenção de líquidos e modulam processos inflamatórios.
+              Indicado em pós-operatório, gravidez e rotina preventiva.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Manobras manuais que estimulam o sistema linfático e reduzem
+              retenção de líquidos. Indicado em pós-op e rotina preventiva.
+              <br>
+              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="trat__card">
+          <span class="trat__card-num">05</span>
+          <h3 class="trat__card-name">Microagulhamento</h3>
+          <p class="trat__card-tagline">Indução de colágeno + ativos de alta concentração</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Microlesões controladas que ativam os mecanismos naturais de
+              reparo da pele e potencializam a absorção de ativos. Indicado
+              para cicatrizes, manchas e rejuvenescimento global.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Microlesões controladas que ativam o reparo natural da pele.
+              Indicado para cicatrizes, manchas e rejuvenescimento.
+              <br>
+              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="trat__card">
+          <span class="trat__card-num">06</span>
+          <h3 class="trat__card-name">Protocolo Personalizado</h3>
+          <p class="trat__card-tagline">Avaliação completa + combinação de técnicas sob medida</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Para quem busca resultado além do convencional. Análise
+              aprofundada da pele, histórico e objetivos — seguida de
+              um protocolo exclusivo que combina técnicas de forma sinérgica.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar avaliação</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Análise aprofundada da pele e protocolo exclusivo que combina
+              técnicas de forma sinérgica para o seu objetivo específico.
+              <br>
+              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Strip de fechamento -->
+      <div class="trat__strip">
+        <p class="trat__strip-text">
+          Não encontrou o que busca?<br>
+          <em>Vamos conversar sobre a sua pele.</em>
+        </p>
+        <a href="https://wa.me/55" class="btn-whatsapp" target="_blank" rel="noopener">
+          Falar no WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
   <script>
     // ─── INIT ──────────────────────────────────────────────────────
     const reducedMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1112,6 +1588,9 @@
 
       // ── Sobre animations ────────────────────────────────────────
       initSobre();
+
+      // ── Tratamentos animations ───────────────────────────────────
+      initTratamentos();
 
       // ── Nav scroll behavior ─────────────────────────────────────
       const nav = document.getElementById('nav');
@@ -1188,6 +1667,66 @@
           scrub: 1.2,
         }
       });
+    }
+
+    // ── Tratamentos animations ────────────────────────────────────
+    function initTratamentos() {
+      const isMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      // Eyebrow clip
+      gsap.to('.trat__eyebrow-text', {
+        y: '0%', duration: 0.9, ease: 'power4.out',
+        scrollTrigger: { trigger: '.trat__header', start: 'top 78%', toggleActions: 'play none none none' }
+      });
+
+      // Headline clip reveal
+      gsap.to('.trat__headline-inner', {
+        y: '0%', duration: 1.1, stagger: 0.1, ease: 'power4.out',
+        scrollTrigger: { trigger: '.trat__headline', start: 'top 78%', toggleActions: 'play none none none' }
+      });
+
+      // Sub fade
+      gsap.to('.trat__sub', {
+        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: '.trat__sub', start: 'top 80%', toggleActions: 'play none none none' }
+      });
+
+      // Cards stagger fade
+      gsap.fromTo('.trat__card',
+        { opacity: 0, y: 32 },
+        {
+          opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
+          scrollTrigger: { trigger: '.trat__grid', start: 'top 78%', toggleActions: 'play none none none' }
+        }
+      );
+
+      // Strip fade
+      gsap.to('.trat__strip', {
+        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: '.trat__strip', start: 'top 85%', toggleActions: 'play none none none' }
+      });
+
+      // Mobile: accordion por tap
+      if (!isMouse) {
+        document.querySelectorAll('.trat__card').forEach(card => {
+          card.addEventListener('click', () => {
+            const body = card.querySelector('.trat__card-body');
+            const isOpen = card.classList.contains('is-open');
+
+            // Fecha todos
+            document.querySelectorAll('.trat__card.is-open').forEach(c => {
+              c.classList.remove('is-open');
+              gsap.to(c.querySelector('.trat__card-body'), { maxHeight: 0, duration: 0.45, ease: 'power3.inOut' });
+            });
+
+            if (!isOpen) {
+              card.classList.add('is-open');
+              const inner = body.querySelector('.trat__card-body-inner');
+              gsap.to(body, { maxHeight: inner.scrollHeight + 32, duration: 0.55, ease: 'power3.out' });
+            }
+          });
+        });
+      }
     }
 
     // ── Sobre scroll animations ────────────────────────────────────
@@ -1319,7 +1858,9 @@
         '.hero__sub', '#heroCta1', '#heroCta2',
         '#heroDecoLine', '.hero__scroll',
         '.sobre__eyebrow-text', '.sobre__headline-inner',
-        '.sobre__bio', '.sobre__quote', '.sobre__credential', '.sobre__stat'
+        '.sobre__bio', '.sobre__quote', '.sobre__credential', '.sobre__stat',
+        '.trat__eyebrow-text', '.trat__headline-inner',
+        '.trat__sub', '.trat__card', '.trat__strip'
       ], { opacity: 1, y: 0, x: 0 });
 
       gsap.set('#heroEyebrowLine', { scaleX: 1 });
