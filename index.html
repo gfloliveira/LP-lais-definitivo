@@ -603,6 +603,302 @@
         animation: none;
       }
     }
+
+    /* ─── SHARED LAYOUT UTIL ─────────────────────────────────────── */
+    .section__inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    /* ─── SOBRE ──────────────────────────────────────────────────── */
+    .sobre {
+      background: var(--color-bg);
+      overflow: hidden;
+    }
+
+    .sobre__inner {
+      display: grid;
+      grid-template-columns: 42fr 58fr;
+      gap: 80px;
+      align-items: start;
+      padding-top: 140px;
+      padding-bottom: 120px;
+    }
+
+    /* — media column */
+    .sobre__media {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .sobre__deco-line {
+      position: absolute;
+      left: -20px;
+      top: 5%;
+      width: 1px;
+      height: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--color-gold) 20%,
+        var(--color-gold) 80%,
+        transparent
+      );
+      z-index: 2;
+    }
+
+    .sobre__photo-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sobre__photo {
+      width: 100%;
+      height: 115%;
+      object-fit: cover;
+      object-position: center 15%;
+      will-change: transform;
+    }
+
+    /* — content column */
+    .sobre__content {
+      padding-top: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sobre__eyebrow {
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .sobre__eyebrow-text {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      transform: translateY(120%);
+    }
+
+    .sobre__headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--color-text-dark);
+      margin-bottom: 36px;
+    }
+
+    .sobre__headline-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .sobre__headline-inner {
+      display: block;
+      transform: translateY(100%);
+    }
+
+    .sobre__headline em {
+      font-style: italic;
+      color: var(--color-gold);
+      font-weight: 300;
+    }
+
+    .sobre__bio {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      max-width: 520px;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    /* — pull quote */
+    .sobre__quote {
+      border: none;
+      margin-bottom: 52px;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .sobre__quote p {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--color-text-dark);
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .sobre__quote p::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      bottom: 0.25em;
+      width: 1px;
+      background: var(--color-gold);
+    }
+
+    .sobre__quote em {
+      color: var(--color-gold);
+      font-style: italic;
+    }
+
+    /* — credentials */
+    .sobre__credentials {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sobre__credential {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .sobre__credential::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--color-gold);
+      flex-shrink: 0;
+    }
+
+    /* — stats dark band */
+    .sobre__stats {
+      background: var(--color-bg-dark);
+      width: 100%;
+    }
+
+    .sobre__stats-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 88px;
+      padding-bottom: 88px;
+    }
+
+    .sobre__stat {
+      flex: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .sobre__stat-value {
+      display: flex;
+      align-items: flex-start;
+      gap: 2px;
+      line-height: 1;
+    }
+
+    .sobre__stat-number {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--color-gold);
+    }
+
+    .sobre__stat-plus {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.2vw, 2.4rem);
+      font-weight: 300;
+      color: var(--color-gold);
+      margin-top: 0.18em;
+    }
+
+    .sobre__stat-label {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+    }
+
+    .sobre__stat-divider {
+      width: 1px;
+      height: 56px;
+      background: rgba(176, 168, 152, 0.18);
+      flex-shrink: 0;
+    }
+
+    /* ─── SOBRE RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 1280px) {
+      .sobre__inner { gap: 60px; }
+    }
+
+    @media (max-width: 1024px) {
+      .section__inner { padding: 0 48px; }
+      .sobre__inner { gap: 48px; padding-top: 100px; padding-bottom: 80px; }
+      .sobre__deco-line { left: -12px; }
+    }
+
+    @media (max-width: 768px) {
+      .section__inner { padding: 0 24px; }
+
+      .sobre__inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding-top: 80px;
+        padding-bottom: 0;
+      }
+
+      .sobre__media {
+        max-width: 340px;
+        margin: 0 auto;
+      }
+
+      .sobre__deco-line { display: none; }
+
+      .sobre__content { padding-top: 0; }
+
+      .sobre__bio { max-width: 100%; }
+
+      .sobre__stats-inner {
+        flex-direction: column;
+        gap: 44px;
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
+
+      .sobre__stat-divider {
+        width: 40px;
+        height: 1px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section__inner { padding: 0 20px; }
+    }
   </style>
 </head>
 <body>
@@ -692,6 +988,101 @@
     </div>
   </section>
 
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
+    <div class="section__inner sobre__inner">
+
+      <!-- Foto -->
+      <div class="sobre__media">
+        <div class="sobre__deco-line"></div>
+        <div class="sobre__photo-wrap">
+          <img
+            src="assets/photo-portrait.jpg"
+            alt="Laís Nayélli — retrato"
+            class="sobre__photo"
+            id="sobrePhoto"
+            width="800"
+            height="1000"
+            loading="lazy"
+          >
+        </div>
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="sobre__content">
+        <div class="sobre__eyebrow">
+          <span class="sobre__eyebrow-text">Sobre Laís</span>
+        </div>
+
+        <h2 class="sobre__headline">
+          <span class="sobre__headline-line">
+            <span class="sobre__headline-inner">Formação técnica.</span>
+          </span>
+          <span class="sobre__headline-line">
+            <span class="sobre__headline-inner"><em>Toque humano.</em></span>
+          </span>
+        </h2>
+
+        <p class="sobre__bio">
+          Graduada em Estética e Cosmetologia, Laís Nayélli construiu sua
+          prática sobre uma premissa simples: resultado real começa com
+          diagnóstico honesto. Cada protocolo é desenhado a partir da sua
+          pele — sua história, sua rotina, seus objetivos. Nada genérico.
+          Nada por estimativa.
+        </p>
+
+        <blockquote class="sobre__quote">
+          <p>
+            "Cada pele conta uma história. Meu trabalho é
+            fazê-la <em>brilhar</em> com intenção."
+          </p>
+        </blockquote>
+
+        <ul class="sobre__credentials">
+          <li class="sobre__credential">Graduação em Estética e Cosmetologia</li>
+          <li class="sobre__credential">Especialização em Protocolos Faciais Avançados</li>
+          <li class="sobre__credential">Formação em Cosmetologia Clínica</li>
+          <li class="sobre__credential">Cursos de atualização anuais — nacionais e internacionais</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Faixa de contadores — fundo escuro -->
+    <div class="sobre__stats">
+      <div class="section__inner sobre__stats-inner">
+
+        <div class="sobre__stat">
+          <div class="sobre__stat-value">
+            <span class="sobre__stat-number" data-target="300">0</span>
+            <span class="sobre__stat-plus">+</span>
+          </div>
+          <span class="sobre__stat-label">Clientes atendidas</span>
+        </div>
+
+        <div class="sobre__stat-divider"></div>
+
+        <div class="sobre__stat">
+          <div class="sobre__stat-value">
+            <span class="sobre__stat-number" data-target="5">0</span>
+          </div>
+          <span class="sobre__stat-label">Anos de experiência</span>
+        </div>
+
+        <div class="sobre__stat-divider"></div>
+
+        <div class="sobre__stat">
+          <div class="sobre__stat-value">
+            <span class="sobre__stat-number" data-target="12">0</span>
+            <span class="sobre__stat-plus">+</span>
+          </div>
+          <span class="sobre__stat-label">Protocolos exclusivos</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <script>
     // ─── INIT ──────────────────────────────────────────────────────
     const reducedMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -718,6 +1109,9 @@
       gsap.ticker.add(t => lenis.raf(t * 1000));
       gsap.ticker.lagSmoothing(0);
       lenis.on('scroll', ScrollTrigger.update);
+
+      // ── Sobre animations ────────────────────────────────────────
+      initSobre();
 
       // ── Nav scroll behavior ─────────────────────────────────────
       const nav = document.getElementById('nav');
@@ -796,16 +1190,144 @@
       });
     }
 
+    // ── Sobre scroll animations ────────────────────────────────────
+    function initSobre() {
+      // Foto parallax
+      gsap.to('#sobrePhoto', {
+        yPercent: -8,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.sobre__media',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.2,
+        }
+      });
+
+      // Linha decorativa — height reveal
+      gsap.to('.sobre__deco-line', {
+        height: '90%',
+        duration: 1.4,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.sobre__media',
+          start: 'top 75%',
+          toggleActions: 'play none none none',
+        }
+      });
+
+      // Eyebrow clip
+      gsap.to('.sobre__eyebrow-text', {
+        y: '0%',
+        duration: 0.9,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.sobre__content',
+          start: 'top 78%',
+          toggleActions: 'play none none none',
+        }
+      });
+
+      // Headline clip reveal — stagger por linha
+      gsap.to('.sobre__headline-inner', {
+        y: '0%',
+        duration: 1.1,
+        stagger: 0.1,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.sobre__headline',
+          start: 'top 78%',
+          toggleActions: 'play none none none',
+        }
+      });
+
+      // Bio fade + y
+      gsap.to('.sobre__bio', {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.sobre__bio',
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        }
+      });
+
+      // Pull quote
+      gsap.to('.sobre__quote', {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.sobre__quote',
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        }
+      });
+
+      // Credentials stagger
+      gsap.to('.sobre__credential', {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.sobre__credentials',
+          start: 'top 82%',
+          toggleActions: 'play none none none',
+        }
+      });
+
+      // Stats — fade in + contador numérico
+      let countersStarted = false;
+      gsap.to('.sobre__stat', {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.sobre__stats',
+          start: 'top 78%',
+          toggleActions: 'play none none none',
+          onEnter() {
+            if (countersStarted) return;
+            countersStarted = true;
+            document.querySelectorAll('.sobre__stat-number').forEach(el => {
+              const target = parseInt(el.dataset.target, 10);
+              const proxy = { val: 0 };
+              gsap.to(proxy, {
+                val: target,
+                duration: 2,
+                ease: 'power2.out',
+                onUpdate() { el.textContent = Math.round(proxy.val); }
+              });
+            });
+          }
+        }
+      });
+    }
+
     // ── Reduced motion: show everything immediately ────────────────
     function showAll() {
       gsap.set([
         '#navWordmark', '#navLinks a', '#navCta', '.nav__menu-btn',
         '#heroEyebrow', '.hero__headline-inner',
         '.hero__sub', '#heroCta1', '#heroCta2',
-        '#heroDecoLine', '.hero__scroll'
+        '#heroDecoLine', '.hero__scroll',
+        '.sobre__eyebrow-text', '.sobre__headline-inner',
+        '.sobre__bio', '.sobre__quote', '.sobre__credential', '.sobre__stat'
       ], { opacity: 1, y: 0, x: 0 });
 
       gsap.set('#heroEyebrowLine', { scaleX: 1 });
+      gsap.set('.sobre__deco-line', { height: '90%' });
+
+      document.querySelectorAll('.sobre__stat-number').forEach(el => {
+        el.textContent = el.dataset.target;
+      });
     }
   </script>
 </body>
