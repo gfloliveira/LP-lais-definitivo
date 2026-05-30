@@ -488,6 +488,66 @@
                   opacity 0.3s;
     }
 
+    .nav__menu-btn.is-open span:nth-child(1) {
+      transform: translateY(3.5px) rotate(45deg);
+    }
+    .nav__menu-btn.is-open span:nth-child(2) {
+      transform: translateY(-3.5px) rotate(-45deg);
+    }
+
+    /* Active nav link */
+    .nav__links a.is-active {
+      color: var(--color-gold);
+    }
+    .nav__links a.is-active::after {
+      width: 100%;
+    }
+
+    /* Mobile drawer */
+    .nav__drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      background: var(--color-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.4rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-elegant);
+    }
+    .nav__drawer.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .nav__drawer a {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-text-dark);
+      text-decoration: none;
+      transition: color 0.3s var(--ease-smooth);
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    .nav__drawer.is-open a {
+      opacity: 1;
+      transform: translateY(0);
+      transition: color 0.3s var(--ease-smooth),
+                  opacity 0.5s var(--ease-elegant),
+                  transform 0.5s var(--ease-elegant);
+    }
+    .nav__drawer.is-open a:nth-child(1) { transition-delay: 0.05s; }
+    .nav__drawer.is-open a:nth-child(2) { transition-delay: 0.10s; }
+    .nav__drawer.is-open a:nth-child(3) { transition-delay: 0.15s; }
+    .nav__drawer.is-open a:nth-child(4) { transition-delay: 0.20s; }
+    .nav__drawer a:hover,
+    .nav__drawer a.is-active { color: var(--color-gold); }
+
     /* ─── RESPONSIVE ─────────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .hero__content {
@@ -2057,6 +2117,14 @@
     </button>
   </nav>
 
+  <!-- MOBILE DRAWER -->
+  <div class="nav__drawer" id="navDrawer">
+    <a href="#sobre">Sobre</a>
+    <a href="#tratamentos">Tratamentos</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#contato">Contato</a>
+  </div>
+
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero__content">
@@ -2772,6 +2840,9 @@
         onLeaveBack: () => nav.classList.remove('is-scrolled'),
       });
 
+      // ── Nav links: Lenis scroll + active state + mobile drawer ──
+      initNavScroll(lenis);
+
       // ── Loader ──────────────────────────────────────────────────
       gsap.set('#loaderTagline', { y: 10 });
 
@@ -2786,6 +2857,73 @@
         .to('#loaderTagline',  { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.4')
         .to({},                { duration: 0.7 })
         .to('#loader',         { yPercent: -100, duration: 1.1, ease: 'power4.inOut' });
+    }
+
+    // ── Nav: Lenis scroll-to + active state + mobile drawer ──────
+    function initNavScroll(lenis) {
+      const navHeight = document.getElementById('nav').offsetHeight;
+      const easing = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+
+      // Intercept every anchor with href="#..." in the whole page
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+          const id = anchor.getAttribute('href');
+          if (!id || id === '#') return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          closeDrawer();
+          lenis.scrollTo(target, { offset: -navHeight, duration: 1.4, easing });
+        });
+      });
+
+      // Mobile drawer toggle
+      const btn    = document.getElementById('menuBtn');
+      const drawer = document.getElementById('navDrawer');
+      function closeDrawer() {
+        btn.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+      btn.addEventListener('click', () => {
+        const opening = !btn.classList.contains('is-open');
+        btn.classList.toggle('is-open');
+        drawer.classList.toggle('is-open');
+        document.body.style.overflow = opening ? 'hidden' : '';
+      });
+
+      // Active state: highlight link matching visible section
+      const sections = [
+        { id: 'sobre',      href: '#sobre' },
+        { id: 'tratamentos', href: '#tratamentos' },
+        { id: 'resultados',  href: '#resultados' },
+        { id: 'contato',     href: '#contato' },
+      ];
+      const allNavLinks = document.querySelectorAll('.nav__links a, .nav__drawer a');
+
+      function setActive(href) {
+        allNavLinks.forEach(a => {
+          a.classList.toggle('is-active', a.getAttribute('href') === href);
+        });
+      }
+
+      sections.forEach(({ id, href }) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 55%',
+          end:   'bottom 55%',
+          onEnter:     () => setActive(href),
+          onEnterBack: () => setActive(href),
+          onLeave:     () => { /* next section's onEnter handles it */ },
+          onLeaveBack: () => {
+            // Back above first section — remove all active
+            const first = sections[0];
+            if (href === first.href) setActive(null);
+          },
+        });
+      });
     }
 
     // ── Hero entrance animation ────────────────────────────────────
