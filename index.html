@@ -1304,6 +1304,288 @@
     @media (max-width: 480px) {
       .trat__grid { grid-template-columns: 1fr; }
     }
+
+    /* ─── RESULTADOS ─────────────────────────────────────────────── */
+    .result {
+      background: var(--color-bg-dark);
+      position: relative;
+    }
+
+    .result__inner {
+      height: 100vh;
+      height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* — cabeçalho */
+    .result__header {
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 48px 80px 36px;
+    }
+
+    .result__eyebrow-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .result__eyebrow-line {
+      width: 32px;
+      height: 1px;
+      background: var(--color-gold);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    .result__eyebrow-text {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      opacity: 0;
+    }
+
+    .result__title-wrap { opacity: 0; transform: translateY(16px); }
+
+    .result__headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--color-bg);
+    }
+
+    .result__headline em {
+      font-style: italic;
+      color: var(--color-gold);
+    }
+
+    .result__counter {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--color-text-light);
+      letter-spacing: 0.08em;
+      opacity: 0;
+      flex-shrink: 0;
+      padding-bottom: 4px;
+    }
+
+    .result__counter-current {
+      color: var(--color-gold);
+      font-size: 1.15rem;
+    }
+
+    /* — track */
+    .result__track-wrap {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .result__track {
+      display: flex;
+      height: 100%;
+      gap: 2px;
+      will-change: transform;
+    }
+
+    /* — slides */
+    .result__slide {
+      flex-shrink: 0;
+      width: min(85vw, 1300px);
+      height: 100%;
+      display: grid;
+      grid-template-columns: 62fr 38fr;
+    }
+
+    .result__slide-photo-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result__slide-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    /* overlay escuro sutil sobre foto para leitura */
+    .result__slide-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, rgba(28,26,23,0.35) 100%);
+      pointer-events: none;
+    }
+
+    .result__slide-panel {
+      background: #1C1A17;
+      border-left: 1px solid rgba(176, 168, 152, 0.1);
+      padding: 48px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .result__slide-num {
+      font-family: var(--font-serif);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--color-gold);
+      letter-spacing: 0.18em;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .result__slide-category {
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .result__slide-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.15rem, 1.7vw, 1.65rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--color-bg);
+      margin-bottom: 28px;
+      position: relative;
+      padding-left: 22px;
+    }
+
+    .result__slide-quote::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.2em;
+      bottom: 0.2em;
+      width: 1px;
+      background: var(--color-gold);
+      opacity: 0.55;
+    }
+
+    .result__slide-detail {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(176, 168, 152, 0.55);
+    }
+
+    /* — rodapé: barra de progresso + hint */
+    .result__footer {
+      flex-shrink: 0;
+      padding: 20px 80px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .result__progress {
+      height: 1px;
+      background: rgba(176, 168, 152, 0.12);
+      position: relative;
+    }
+
+    .result__progress-fill {
+      position: absolute;
+      inset: 0;
+      background: var(--color-gold);
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+
+    .result__hint {
+      font-family: var(--font-sans);
+      font-size: 0.56rem;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(176, 168, 152, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .result__hint::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    /* ─── RESULTADOS RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .result__header { padding: 40px 48px 28px; }
+      .result__footer { padding: 16px 48px 24px; }
+    }
+
+    @media (max-width: 768px) {
+      .result__inner {
+        height: auto;
+        overflow: visible;
+      }
+
+      .result__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 64px 24px 40px;
+      }
+
+      .result__counter { display: none; }
+
+      .result__track-wrap { overflow: visible; }
+
+      .result__track {
+        flex-direction: column;
+        height: auto;
+        gap: 2px;
+      }
+
+      .result__slide {
+        width: 100%;
+        height: auto;
+        grid-template-columns: 1fr;
+      }
+
+      .result__slide-photo-wrap {
+        height: 300px;
+      }
+
+      .result__slide-photo-wrap::after { display: none; }
+
+      .result__slide-panel {
+        padding: 36px 24px;
+        justify-content: flex-start;
+      }
+
+      .result__footer { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .result__header { padding: 56px 20px 36px; }
+      .result__slide-photo-wrap { height: 260px; }
+      .result__slide-panel { padding: 32px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -1732,6 +2014,149 @@
     </div>
   </section>
 
+  <!-- RESULTADOS -->
+  <section class="result" id="resultados">
+    <div class="result__inner">
+
+      <!-- Cabeçalho fixo no topo da seção -->
+      <div class="result__header">
+        <div class="result__title-group">
+          <div class="result__eyebrow-wrap">
+            <span class="result__eyebrow-line"></span>
+            <span class="result__eyebrow-text">Resultados</span>
+          </div>
+          <div class="result__title-wrap">
+            <h2 class="result__headline">
+              Transformações que<br><em>falam por si.</em>
+            </h2>
+          </div>
+        </div>
+        <span class="result__counter">
+          <span class="result__counter-current">01</span>
+          <span> / 04</span>
+        </span>
+      </div>
+
+      <!-- Track horizontal -->
+      <div class="result__track-wrap">
+        <div class="result__track" id="resultTrack">
+
+          <!-- Slide 01 -->
+          <div class="result__slide">
+            <div class="result__slide-photo-wrap">
+              <img
+                src="assets/photo-portrait.jpg"
+                alt="Resultado — Limpeza e Revitalização"
+                class="result__slide-photo"
+                width="800" height="1000"
+                loading="lazy"
+              >
+            </div>
+            <div class="result__slide-panel">
+              <span class="result__slide-num">01</span>
+              <span class="result__slide-category">Limpeza &amp; Revitalização</span>
+              <p class="result__slide-quote">
+                "Minha pele voltou a brilhar de um jeito que eu havia
+                completamente esquecido."
+              </p>
+              <p class="result__slide-detail">
+                Protocolo de 3 sessões<br>
+                Limpeza profunda + revitalização com ativos concentrados
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 02 -->
+          <div class="result__slide">
+            <div class="result__slide-photo-wrap">
+              <img
+                src="assets/hero.jpg"
+                alt="Resultado — Tratamento de Manchas"
+                class="result__slide-photo"
+                style="object-position: center 30%"
+                width="800" height="1067"
+                loading="lazy"
+              >
+            </div>
+            <div class="result__slide-panel">
+              <span class="result__slide-num">02</span>
+              <span class="result__slide-category">Tratamentos para Manchas</span>
+              <p class="result__slide-quote">
+                "Resultado progressivo e sem agressão —
+                exatamente o que eu precisava."
+              </p>
+              <p class="result__slide-detail">
+                Protocolo de 6 sessões<br>
+                Peeling despigmentante + ativos de precisão
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 03 -->
+          <div class="result__slide">
+            <div class="result__slide-photo-wrap">
+              <img
+                src="assets/photo-professional.jpg"
+                alt="Resultado — Microagulhamento"
+                class="result__slide-photo"
+                width="800" height="1000"
+                loading="lazy"
+              >
+            </div>
+            <div class="result__slide-panel">
+              <span class="result__slide-num">03</span>
+              <span class="result__slide-category">Microagulhamento</span>
+              <p class="result__slide-quote">
+                "Cada sessão trouxe uma versão mais uniforme
+                e firme da minha pele."
+              </p>
+              <p class="result__slide-detail">
+                Protocolo de 4 sessões<br>
+                Indução de colágeno + ativo personalizado
+              </p>
+            </div>
+          </div>
+
+          <!-- Slide 04 -->
+          <div class="result__slide">
+            <div class="result__slide-photo-wrap">
+              <img
+                src="assets/photo-editorial.jpg"
+                alt="Resultado — Protocolo Personalizado"
+                class="result__slide-photo"
+                style="object-position: center 25%"
+                width="800" height="1000"
+                loading="lazy"
+              >
+            </div>
+            <div class="result__slide-panel">
+              <span class="result__slide-num">04</span>
+              <span class="result__slide-category">Protocolo Personalizado</span>
+              <p class="result__slide-quote">
+                "Pela primeira vez, um protocolo feito
+                inteiramente para mim."
+              </p>
+              <p class="result__slide-detail">
+                Avaliação completa<br>
+                Combinação exclusiva de técnicas sob medida
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Rodapé: progresso + hint -->
+      <div class="result__footer">
+        <div class="result__progress">
+          <div class="result__progress-fill" id="resultProgressFill"></div>
+        </div>
+        <span class="result__hint">Role para explorar</span>
+      </div>
+
+    </div>
+  </section>
+
   <script>
     // ─── INIT ──────────────────────────────────────────────────────
     const reducedMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1764,6 +2189,9 @@
 
       // ── Tratamentos animations ───────────────────────────────────
       initTratamentos();
+
+      // ── Resultados animations ────────────────────────────────────
+      initResultados();
 
       // ── Nav scroll behavior ─────────────────────────────────────
       const nav = document.getElementById('nav');
@@ -1840,6 +2268,68 @@
           scrub: 1.2,
         }
       });
+    }
+
+    // ── Resultados ────────────────────────────────────────────────
+    function initResultados() {
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+      // Header: eyebrow line + text + title
+      gsap.to('.result__eyebrow-line', {
+        scaleX: 1, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: '.result', start: 'top 80%', toggleActions: 'play none none none' }
+      });
+      gsap.to('.result__eyebrow-text', {
+        opacity: 1, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: '.result', start: 'top 80%', toggleActions: 'play none none none' }
+      });
+      gsap.to('.result__title-wrap', {
+        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: '.result', start: 'top 75%', toggleActions: 'play none none none' }
+      });
+      gsap.to('.result__counter', {
+        opacity: 1, duration: 0.8,
+        scrollTrigger: { trigger: '.result', start: 'top 75%', toggleActions: 'play none none none' }
+      });
+
+      if (isMobile) {
+        // Mobile: slides aparecem em stagger vertical
+        gsap.from('.result__slide', {
+          opacity: 0, y: 48, duration: 0.9, stagger: 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: '.result__track', start: 'top 80%', toggleActions: 'play none none none' }
+        });
+        return;
+      }
+
+      // Desktop: horizontal pin
+      const inner   = document.querySelector('.result__inner');
+      const track   = document.getElementById('resultTrack');
+      const fill    = document.getElementById('resultProgressFill');
+      const counter = document.querySelector('.result__counter-current');
+      const slides  = document.querySelectorAll('.result__slide');
+      const n       = slides.length;
+
+      const dist = () => track.scrollWidth - inner.offsetWidth;
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: '.result',
+          start: 'top top',
+          end: () => `+=${dist()}`,
+          pin: inner,
+          scrub: 1.2,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate(self) {
+            gsap.set(fill, { scaleX: self.progress });
+            if (counter) {
+              counter.textContent = String(
+                Math.min(Math.floor(self.progress * n) + 1, n)
+              ).padStart(2, '0');
+            }
+          }
+        }
+      }).to(track, { x: () => -dist(), ease: 'none' });
     }
 
     // ── Tratamentos animations ────────────────────────────────────
@@ -2043,6 +2533,10 @@
       ], { opacity: 1, y: 0, x: 0 });
 
       gsap.set('.trat__card-line', { scaleX: 1 });
+      gsap.set([
+        '.result__eyebrow-line', '.result__eyebrow-text',
+        '.result__title-wrap', '.result__counter'
+      ], { opacity: 1, y: 0, scaleX: 1 });
 
       gsap.set('#heroEyebrowLine', { scaleX: 1 });
       gsap.set('.sobre__deco-line', { height: '90%' });
