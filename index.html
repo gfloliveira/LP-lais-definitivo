@@ -614,13 +614,6 @@
       }
     }
 
-    /* ─── PREFERS REDUCED MOTION ─────────────────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      .hero__scroll-line::after {
-        animation: none;
-      }
-    }
-
     /* ─── SHARED LAYOUT UTIL ─────────────────────────────────────── */
     .section__inner {
       max-width: 1400px;
@@ -2723,7 +2716,6 @@
 
   <script>
     // ─── INIT ──────────────────────────────────────────────────────
-    const reducedMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Aguarda DOM + defer scripts (garante GSAP/Lenis disponíveis)
     function onReady(fn) {
@@ -2777,46 +2769,6 @@
         onEnter: () => nav.classList.add('is-scrolled'),
         onLeaveBack: () => nav.classList.remove('is-scrolled'),
       });
-
-      // ── Reduced motion: loader rápido + fade simples (sem movimento) ──
-      if (reducedMo) {
-        gsap.to('#loader', {
-          opacity: 0, duration: 0.5, ease: 'power2.out',
-          onComplete() {
-            document.getElementById('loader').style.display = 'none';
-            gsap.set([
-              '#navWordmark', '#navLinks a', '#navCta', '.nav__menu-btn',
-              '.hero__headline-inner', '.hero__sub', '#heroCta1', '#heroCta2',
-              '#heroDecoLine', '.hero__scroll', '.hero__photo-wrap'
-            ], { opacity: 0 });
-            gsap.to([
-              '#navWordmark', '#navLinks a', '#navCta', '.nav__menu-btn',
-              '.hero__headline-inner', '.hero__sub', '#heroCta1', '#heroCta2',
-              '#heroDecoLine', '.hero__scroll'
-            ], { opacity: 1, duration: 0.6, stagger: 0.04, ease: 'power2.out' });
-            gsap.to('.hero__photo-wrap',   { opacity: 1, duration: 0.8, ease: 'power2.out' });
-            gsap.set(['#heroEyebrowLine', '.hero__em-line'], { scaleX: 1 });
-            gsap.set('#heroEyebrow', { y: '0%' });
-            gsap.set('.hero__photo-wrap', { clipPath: 'inset(0 0% 0 0)' });
-            gsap.set('.sobre__photo-wrap', { clipPath: 'inset(0 0 0% 0)' });
-            gsap.set('.sobre__deco-line', { height: '90%' });
-            gsap.set(['.trat__card-line'], { scaleX: 1 });
-            gsap.set([
-              '.sobre__eyebrow-text', '.sobre__headline-inner', '.sobre__bio',
-              '.sobre__quote', '.sobre__credential', '.sobre__stat',
-              '.trat__eyebrow-text', '.trat__headline-inner', '.trat__sub',
-              '.trat__card', '.trat__strip',
-              '.result__eyebrow-line', '.result__eyebrow-text', '.result__title-wrap', '.result__counter',
-              '.contato__eyebrow-text', '.contato__headline', '.form__field', '.form__submit', '.contato__wa',
-              '.footer__inner > div', '.footer__bottom'
-            ], { opacity: 1, y: 0, x: 0 });
-            document.querySelectorAll('.sobre__stat-number').forEach(el => {
-              el.textContent = el.dataset.target;
-            });
-          }
-        });
-        return;
-      }
 
       // ── Loader ──────────────────────────────────────────────────
       gsap.set('#loaderTagline', { y: 10 });
@@ -3119,43 +3071,6 @@
       });
     }
 
-    // ── Reduced motion: show everything immediately ────────────────
-    function showAll() {
-      gsap.set([
-        '#navWordmark', '#navLinks a', '#navCta', '.nav__menu-btn',
-        '#heroEyebrow',
-        '.hero__sub', '#heroCta1', '#heroCta2',
-        '#heroDecoLine', '.hero__scroll',
-        '.sobre__eyebrow-text', '.sobre__headline-inner',
-        '.sobre__bio', '.sobre__quote', '.sobre__credential', '.sobre__stat',
-        '.trat__eyebrow-text', '.trat__headline-inner',
-        '.trat__sub', '.trat__card', '.trat__strip'
-      ], { opacity: 1, y: 0, x: 0 });
-
-      gsap.set('.hero__headline-inner', { opacity: 1, filter: 'blur(0px)', scale: 1 });
-
-      gsap.set('.trat__card-line', { scaleX: 1 });
-      gsap.set([
-        '.result__eyebrow-line', '.result__eyebrow-text',
-        '.result__title-wrap', '.result__counter'
-      ], { opacity: 1, y: 0, scaleX: 1 });
-
-      gsap.set([
-        '.contato__eyebrow-text', '.contato__headline',
-        '.form__field', '.form__submit', '.contato__wa'
-      ], { opacity: 1, y: 0, x: 0 });
-
-      gsap.set('#heroEyebrowLine', { scaleX: 1 });
-      gsap.set('.hero__em-line',   { scaleX: 1 });
-      gsap.set('.hero__photo-wrap', { clipPath: 'inset(0 0% 0 0)' });
-      gsap.set('.sobre__deco-line', { height: '90%' });
-      gsap.set('.sobre__photo-wrap', { clipPath: 'inset(0 0 0% 0)' });
-      gsap.set(['.footer__inner > div', '.footer__bottom'], { opacity: 1, y: 0 });
-
-      document.querySelectorAll('.sobre__stat-number').forEach(el => {
-        el.textContent = el.dataset.target;
-      });
-    }
   </script>
 </body>
 </html>
