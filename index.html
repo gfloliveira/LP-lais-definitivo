@@ -277,9 +277,7 @@
     .hero__headline-inner {
       display: block;
       opacity: 0;
-      filter: blur(14px);
-      transform: scale(1.04);
-      will-change: filter, transform, opacity;
+      /* filter e scale controlados via gsap.set() para evitar conflito de ownership */
     }
 
     .hero__headline em {
@@ -2798,6 +2796,13 @@
 
     // ── Hero entrance animation ────────────────────────────────────
     function startHero() {
+      // GSAP assume controle total de filter+scale antes de qualquer tween
+      gsap.set('.hero__headline-inner', {
+        filter: 'blur(14px)',
+        scale: 1.04,
+        transformOrigin: 'center center',
+      });
+
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
       // Nav items
