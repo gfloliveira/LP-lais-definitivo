@@ -272,12 +272,14 @@
 
     .hero__headline-line {
       display: block;
-      overflow: hidden;
     }
 
     .hero__headline-inner {
       display: block;
-      transform: translateY(100%);
+      opacity: 0;
+      filter: blur(14px);
+      transform: scale(1.04);
+      will-change: filter, transform, opacity;
     }
 
     .hero__headline em {
@@ -2808,12 +2810,14 @@
       tl.to('#heroEyebrowLine', { scaleX: 1, duration: 0.8, ease: 'power3.out' }, 0.3)
         .to('#heroEyebrow',     { y: '0%', duration: 0.9, ease: 'power4.out' }, 0.4);
 
-      // Headline — clip reveal, staggered lines
+      // Headline — blur em foco, cada linha surge da névoa
       tl.to('.hero__headline-inner', {
-        y: '0%',
+        opacity: 1,
+        filter: 'blur(0px)',
+        scale: 1,
         duration: 1.1,
-        stagger: 0.1,
-        ease: 'power4.out',
+        stagger: 0.18,
+        ease: 'power3.out',
       }, 0.5);
 
       // Photo curtain: rasga da esquerda pra direita enquanto o headline sobe
@@ -3084,7 +3088,7 @@
     function showAll() {
       gsap.set([
         '#navWordmark', '#navLinks a', '#navCta', '.nav__menu-btn',
-        '#heroEyebrow', '.hero__headline-inner',
+        '#heroEyebrow',
         '.hero__sub', '#heroCta1', '#heroCta2',
         '#heroDecoLine', '.hero__scroll',
         '.sobre__eyebrow-text', '.sobre__headline-inner',
@@ -3092,6 +3096,8 @@
         '.trat__eyebrow-text', '.trat__headline-inner',
         '.trat__sub', '.trat__card', '.trat__strip'
       ], { opacity: 1, y: 0, x: 0 });
+
+      gsap.set('.hero__headline-inner', { opacity: 1, filter: 'blur(0px)', scale: 1 });
 
       gsap.set('.trat__card-line', { scaleX: 1 });
       gsap.set([
