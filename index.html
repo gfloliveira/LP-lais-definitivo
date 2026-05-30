@@ -984,6 +984,8 @@
       min-height: 260px;
       display: flex;
       flex-direction: column;
+      opacity: 0;
+      transform: translateY(32px);
     }
 
     /* borda dourada no hover — excluindo o card featured */
@@ -1721,6 +1723,8 @@
       padding: 16px 40px;
       min-height: 52px;
       cursor: pointer;
+      opacity: 0;
+      transform: translateY(12px);
       transition: background 0.35s var(--ease-smooth),
                   color 0.35s var(--ease-smooth),
                   border-color 0.35s var(--ease-smooth);
@@ -2806,60 +2810,47 @@
 
     // ── Contato ───────────────────────────────────────────────────
     function initContato() {
-      const st = { trigger: '.contato', toggleActions: 'play none none none' };
+      const tog = 'play none none none';
 
-      // Eyebrow
-      gsap.to('.contato__eyebrow-text', {
-        y: '0%', duration: 0.9, ease: 'power4.out',
-        scrollTrigger: { ...st, start: 'top 78%' }
-      });
-
-      // Headline
-      gsap.to('.contato__headline', {
-        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { ...st, start: 'top 75%' }
-      });
+      // Eyebrow → Headline as one sequential timeline
+      gsap.timeline({
+        scrollTrigger: { trigger: '.contato', start: 'top 80%', toggleActions: tog }
+      })
+        .to('.contato__eyebrow-text', { y: '0%', duration: 0.9, ease: 'power4.out' })
+        .to('.contato__headline', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.5');
 
       // Form fields stagger
       gsap.to('.form__field', {
         opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
-        scrollTrigger: { trigger: '.contato__form', start: 'top 80%', toggleActions: 'play none none none' }
+        scrollTrigger: { trigger: '.contato__form', start: 'top 80%', toggleActions: tog }
       });
 
       // Submit button
-      gsap.from('.form__submit', {
-        opacity: 0, y: 12, duration: 0.6, ease: 'power3.out',
-        scrollTrigger: { trigger: '.form__submit', start: 'top 88%', toggleActions: 'play none none none' }
+      gsap.to('.form__submit', {
+        opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+        scrollTrigger: { trigger: '.form__submit', start: 'top 85%', toggleActions: tog }
       });
 
       // WhatsApp block desliza da direita
       gsap.to('.contato__wa', {
         opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.contato__body', start: 'top 78%', toggleActions: 'play none none none' }
+        scrollTrigger: { trigger: '.contato__body', start: 'top 80%', toggleActions: tog }
       });
     }
 
     // ── Resultados ────────────────────────────────────────────────
     function initResultados() {
       const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const tog = 'play none none none';
 
-      // Header: eyebrow line + text + title
-      gsap.to('.result__eyebrow-line', {
-        scaleX: 1, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.result', start: 'top 80%', toggleActions: 'play none none none' }
-      });
-      gsap.to('.result__eyebrow-text', {
-        opacity: 1, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: '.result', start: 'top 80%', toggleActions: 'play none none none' }
-      });
-      gsap.to('.result__title-wrap', {
-        opacity: 1, y: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.result', start: 'top 75%', toggleActions: 'play none none none' }
-      });
-      gsap.to('.result__counter', {
-        opacity: 1, duration: 0.8,
-        scrollTrigger: { trigger: '.result', start: 'top 75%', toggleActions: 'play none none none' }
-      });
+      // Header: eyebrow line → text → title → counter, single timeline
+      gsap.timeline({
+        scrollTrigger: { trigger: '.result', start: 'top 80%', toggleActions: tog }
+      })
+        .to('.result__eyebrow-line', { scaleX: 1, duration: 0.8, ease: 'power3.out' })
+        .to('.result__eyebrow-text', { opacity: 1, duration: 0.7, ease: 'power2.out' }, '-=0.5')
+        .to('.result__title-wrap',   { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, '-=0.4')
+        .to('.result__counter',      { opacity: 1, duration: 0.7 }, '-=0.6');
 
       if (isMobile) {
         // Mobile: slides aparecem em stagger vertical
@@ -2904,44 +2895,37 @@
     // ── Tratamentos animations ────────────────────────────────────
     function initTratamentos() {
       const isMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const tog = 'play none none none';
 
-      // Eyebrow clip
-      gsap.to('.trat__eyebrow-text', {
-        y: '0%', duration: 0.9, ease: 'power4.out',
-        scrollTrigger: { trigger: '.trat__header', start: 'top 78%', toggleActions: 'play none none none' }
-      });
-
-      // Headline clip reveal
-      gsap.to('.trat__headline-inner', {
-        y: '0%', duration: 1.1, stagger: 0.1, ease: 'power4.out',
-        scrollTrigger: { trigger: '.trat__headline', start: 'top 78%', toggleActions: 'play none none none' }
-      });
+      // Eyebrow → Headline as one sequential timeline
+      gsap.timeline({
+        scrollTrigger: { trigger: '.trat__header', start: 'top 80%', toggleActions: tog }
+      })
+        .to('.trat__eyebrow-text',    { y: '0%', duration: 0.9, ease: 'power4.out' })
+        .to('.trat__headline-inner',  { y: '0%', duration: 1.1, stagger: 0.1, ease: 'power4.out' }, '-=0.5');
 
       // Sub fade
       gsap.to('.trat__sub', {
         opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-        scrollTrigger: { trigger: '.trat__sub', start: 'top 80%', toggleActions: 'play none none none' }
+        scrollTrigger: { trigger: '.trat__sub', start: 'top 85%', toggleActions: tog }
       });
 
-      // Cards stagger fade
-      gsap.fromTo('.trat__card',
-        { opacity: 0, y: 32 },
-        {
-          opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
-          scrollTrigger: { trigger: '.trat__grid', start: 'top 78%', toggleActions: 'play none none none' }
-        }
-      );
+      // Cards stagger — CSS sets initial state (opacity:0, translateY:32px)
+      gsap.to('.trat__card', {
+        opacity: 1, y: 0, duration: 0.8, stagger: 0.09, ease: 'power3.out',
+        scrollTrigger: { trigger: '.trat__grid', start: 'top 80%', toggleActions: tog }
+      });
 
-      // Linhas douradas — scaleX 0→1, stagger suave
+      // Linhas douradas — scaleX 0→1, stagger suave (same trigger as cards)
       gsap.to('.trat__card-line', {
-        scaleX: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
-        scrollTrigger: { trigger: '.trat__grid', start: 'top 78%', toggleActions: 'play none none none' }
+        scaleX: 1, duration: 0.7, stagger: 0.09, ease: 'power3.out',
+        scrollTrigger: { trigger: '.trat__grid', start: 'top 80%', toggleActions: tog }
       });
 
       // Strip fade
       gsap.to('.trat__strip', {
         opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-        scrollTrigger: { trigger: '.trat__strip', start: 'top 85%', toggleActions: 'play none none none' }
+        scrollTrigger: { trigger: '.trat__strip', start: 'top 85%', toggleActions: tog }
       });
 
       // Mobile: accordion por tap
@@ -2969,107 +2953,51 @@
 
     // ── Sobre scroll animations ────────────────────────────────────
     function initSobre() {
+      const tog = 'play none none none';
+
       // Foto parallax
       gsap.to('#sobrePhoto', {
-        yPercent: -8,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.sobre__media',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.2,
-        }
+        yPercent: -8, ease: 'none',
+        scrollTrigger: { trigger: '.sobre__media', start: 'top bottom', end: 'bottom top', scrub: 1.2 }
       });
 
       // Linha decorativa — height reveal
       gsap.to('.sobre__deco-line', {
-        height: '90%',
-        duration: 1.4,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.sobre__media',
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-        }
+        height: '90%', duration: 1.4, ease: 'power3.out',
+        scrollTrigger: { trigger: '.sobre__media', start: 'top 80%', toggleActions: tog }
       });
 
-      // Eyebrow clip
-      gsap.to('.sobre__eyebrow-text', {
-        y: '0%',
-        duration: 0.9,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: '.sobre__content',
-          start: 'top 78%',
-          toggleActions: 'play none none none',
-        }
-      });
-
-      // Headline clip reveal — stagger por linha
-      gsap.to('.sobre__headline-inner', {
-        y: '0%',
-        duration: 1.1,
-        stagger: 0.1,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: '.sobre__headline',
-          start: 'top 78%',
-          toggleActions: 'play none none none',
-        }
-      });
+      // Eyebrow → Headline as one sequential timeline
+      gsap.timeline({
+        scrollTrigger: { trigger: '.sobre__content', start: 'top 80%', toggleActions: tog }
+      })
+        .to('.sobre__eyebrow-text',   { y: '0%', duration: 0.9, ease: 'power4.out' })
+        .to('.sobre__headline-inner', { y: '0%', duration: 1.1, stagger: 0.1, ease: 'power4.out' }, '-=0.5');
 
       // Bio fade + y
       gsap.to('.sobre__bio', {
-        opacity: 1,
-        y: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.sobre__bio',
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        }
+        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: '.sobre__bio', start: 'top 85%', toggleActions: tog }
       });
 
       // Pull quote
       gsap.to('.sobre__quote', {
-        opacity: 1,
-        y: 0,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.sobre__quote',
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        }
+        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: '.sobre__quote', start: 'top 85%', toggleActions: tog }
       });
 
       // Credentials stagger
       gsap.to('.sobre__credential', {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.sobre__credentials',
-          start: 'top 82%',
-          toggleActions: 'play none none none',
-        }
+        opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '.sobre__credentials', start: 'top 85%', toggleActions: tog }
       });
 
       // Stats — fade in + contador numérico
       let countersStarted = false;
       gsap.to('.sobre__stat', {
-        opacity: 1,
-        y: 0,
-        duration: 0.9,
-        stagger: 0.15,
-        ease: 'power3.out',
+        opacity: 1, y: 0, duration: 0.9, stagger: 0.15, ease: 'power3.out',
         scrollTrigger: {
-          trigger: '.sobre__stats',
-          start: 'top 78%',
-          toggleActions: 'play none none none',
+          trigger: '.sobre__stats', start: 'top 80%', toggleActions: tog,
           onEnter() {
             if (countersStarted) return;
             countersStarted = true;
@@ -3077,9 +3005,7 @@
               const target = parseInt(el.dataset.target, 10);
               const proxy = { val: 0 };
               gsap.to(proxy, {
-                val: target,
-                duration: 2,
-                ease: 'power2.out',
+                val: target, duration: 2, ease: 'power2.out',
                 onUpdate() { el.textContent = Math.round(proxy.val); }
               });
             });
@@ -3109,7 +3035,7 @@
 
       gsap.set([
         '.contato__eyebrow-text', '.contato__headline',
-        '.form__field', '.contato__wa'
+        '.form__field', '.form__submit', '.contato__wa'
       ], { opacity: 1, y: 0, x: 0 });
 
       gsap.set('#heroEyebrowLine', { scaleX: 1 });
