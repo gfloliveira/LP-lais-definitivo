@@ -277,7 +277,8 @@
     .hero__headline-inner {
       display: block;
       opacity: 0;
-      /* filter e scale controlados via gsap.set() para evitar conflito de ownership */
+      will-change: filter, transform, opacity;
+      transform: translateZ(0);
     }
 
     .hero__headline em {
@@ -664,8 +665,9 @@
       aspect-ratio: 4 / 5;
       overflow: hidden;
       position: relative;
-      clip-path: inset(0 0 100% 0);
-      will-change: clip-path;
+      opacity: 0;
+      will-change: filter, transform, opacity;
+      transform: translateZ(0);
     }
 
     .sobre__photo {
@@ -2988,12 +2990,14 @@
     function initSobre() {
       const tog = 'play none none none';
 
-      // Foto: cortina cai de cima para baixo (clip reveal vertical)
-      gsap.to('.sobre__photo-wrap', {
-        clipPath: 'inset(0 0 0% 0)',
-        duration: 1.6, ease: 'power4.out',
-        scrollTrigger: { trigger: '.sobre__media', start: 'top 58%', toggleActions: tog }
-      });
+      // Foto: blur-em-foco (espelho do H1 da hero)
+      gsap.fromTo('.sobre__photo-wrap',
+        { opacity: 0, filter: 'blur(16px)', scale: 1.04, transformOrigin: 'center center' },
+        {
+          opacity: 1, filter: 'blur(0px)', scale: 1, duration: 1.6, ease: 'power3.out',
+          scrollTrigger: { trigger: '.sobre__media', start: 'top 58%', toggleActions: tog }
+        }
+      );
 
       // Foto parallax
       gsap.to('#sobrePhoto', {
