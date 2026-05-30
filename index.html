@@ -2725,13 +2725,20 @@
     // ─── INIT ──────────────────────────────────────────────────────
     const reducedMo = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Scripts carregados com defer — aguardar DOMContentLoaded
-    window.addEventListener('DOMContentLoaded', () => {
-      // Pequeno tick para garantir GSAP+Lenis carregados
-      requestAnimationFrame(() => requestAnimationFrame(init));
-    });
+    // Aguarda DOM + defer scripts (garante GSAP/Lenis disponíveis)
+    function onReady(fn) {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fn);
+      } else {
+        fn(); // DOMContentLoaded já disparou (ex.: hot-reload)
+      }
+    }
+    onReady(() => requestAnimationFrame(() => requestAnimationFrame(init)));
 
     function init() {
+      // Registro explícito — CDN defer pode não auto-registrar em todos os browsers
+      gsap.registerPlugin(ScrollTrigger);
+
       // ── Cursor ──────────────────────────────────────────────────
       if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         const cursor = document.createElement('div');
@@ -2796,34 +2803,24 @@
 
     // ── Hero entrance animation ────────────────────────────────────
     function startHero() {
-      // GSAP assume controle total de filter+scale antes de qualquer tween
-      gsap.set('.hero__headline-inner', {
-        filter: 'blur(14px)',
-        scale: 1.04,
-        transformOrigin: 'center center',
-      });
-
       const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
       // Nav items
-      tl.to('#navWordmark', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0)
-        .to('#navLinks a',  { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' }, 0.1)
-        .to('#navCta',      { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.2)
+      tl.to('#navWordmark', { opacity: 1, duration: 0.7, ease: 'power3.out' }, 0)
+        .to('#navLinks a',  { opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' }, 0.1)
+        .to('#navCta',      { opacity: 1, duration: 0.6, ease: 'power3.out' }, 0.2)
         .to('.nav__menu-btn', { opacity: 1, duration: 0.6 }, 0.2);
 
       // Eyebrow line + text
       tl.to('#heroEyebrowLine', { scaleX: 1, duration: 0.8, ease: 'power3.out' }, 0.3)
         .to('#heroEyebrow',     { y: '0%', duration: 0.9, ease: 'power4.out' }, 0.4);
 
-      // Headline — blur em foco, cada linha surge da névoa
-      tl.to('.hero__headline-inner', {
-        opacity: 1,
-        filter: 'blur(0px)',
-        scale: 1,
-        duration: 1.1,
-        stagger: 0.18,
-        ease: 'power3.out',
-      }, 0.5);
+      // Headline — blur em foco: fromTo garante estados inicial/final sem leitura lazy
+      tl.fromTo('.hero__headline-inner',
+        { opacity: 0, filter: 'blur(14px)', scale: 1.04, transformOrigin: 'center center' },
+        { opacity: 1, filter: 'blur(0px)',  scale: 1,    duration: 1.1, stagger: 0.18, ease: 'power3.out' },
+        0.5
+      );
 
       // Photo curtain: rasga da esquerda pra direita enquanto o headline sobe
       tl.to('.hero__photo-wrap', {
