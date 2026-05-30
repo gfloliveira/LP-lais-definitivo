@@ -969,7 +969,7 @@
     /* — grid de cards */
     .trat__grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
       background: rgba(28, 26, 23, 0.08);
       border: 1px solid rgba(28, 26, 23, 0.08);
@@ -979,9 +979,9 @@
       background: #EDE8DC;
       position: relative;
       overflow: hidden;
-      padding: 48px 40px 44px;
+      padding: 40px 32px 36px;
       cursor: pointer;
-      min-height: 280px;
+      min-height: 260px;
       display: flex;
       flex-direction: column;
     }
@@ -1032,7 +1032,7 @@
 
     .trat__card-name {
       font-family: var(--font-serif);
-      font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+      font-size: clamp(1.1rem, 1.4vw, 1.5rem);
       font-weight: 300;
       line-height: 1.2;
       color: var(--color-text-dark);
@@ -1225,9 +1225,14 @@
     }
 
     /* ─── TRATAMENTOS RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1280px) {
+      .trat__card { padding: 36px 28px 32px; min-height: 240px; }
+    }
+
     @media (max-width: 1024px) {
       .trat { padding: 100px 0 60px; }
-      .trat__card { padding: 40px 32px 36px; min-height: 260px; }
+      .trat__grid { grid-template-columns: repeat(2, 1fr); }
+      .trat__card { padding: 36px 28px 32px; min-height: 220px; }
       .trat__card--featured { gap: 48px; padding: 48px 40px; }
     }
 
@@ -1517,19 +1522,17 @@
           <p class="trat__card-tagline">Extração manual + alta frequência + máscara enzimática</p>
           <div class="trat__card-overlay">
             <p class="trat__card-desc">
-              Protocolo completo de limpeza com análise de pele, extração
-              profissional e finalização com ativo regenerador. Indicado para
-              todos os tipos de pele, com frequência mensal recomendada.
+              Protocolo completo com análise de pele, extração profissional
+              e finalização com ativo regenerador. Indicado para todos os
+              tipos, com frequência mensal recomendada.
             </p>
             <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
           </div>
           <div class="trat__card-body">
             <div class="trat__card-body-inner">
-              Protocolo completo com análise de pele, extração profissional
-              e finalização com ativo regenerador. Indicado para todos os
-              tipos de pele.
-              <br>
-              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+              Extração profissional e finalização com ativo regenerador.
+              Indicado para todos os tipos de pele.
+              <br><a href="#contato" class="trat__card-body-cta">Agendar →</a>
             </div>
           </div>
         </div>
@@ -1542,18 +1545,17 @@
           <p class="trat__card-tagline">Ácidos de alta performance + neutralização controlada</p>
           <div class="trat__card-overlay">
             <p class="trat__card-desc">
-              Renovação celular acelerada com seleção de ácido conforme
-              o biotipo e objetivo — manchas, textura, poros ou flacidez.
-              Protocolo sequenciado para resultado gradual e seguro.
+              Renovação celular com seleção de ácido conforme o biotipo
+              e objetivo — manchas, textura, poros ou flacidez. Protocolo
+              sequenciado para resultado gradual e seguro.
             </p>
             <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
           </div>
           <div class="trat__card-body">
             <div class="trat__card-body-inner">
-              Renovação celular com seleção de ácido conforme o biotipo.
-              Indicado para manchas, textura, poros ou flacidez.
-              <br>
-              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+              Renovação celular adaptada ao seu biotipo. Indicado para
+              manchas, textura irregular e poros dilatados.
+              <br><a href="#contato" class="trat__card-body-cta">Agendar →</a>
             </div>
           </div>
         </div>
@@ -1562,22 +1564,21 @@
         <div class="trat__card">
           <span class="trat__card-num">03</span>
           <div class="trat__card-line"></div>
-          <h3 class="trat__card-name">Radiofrequência Facial</h3>
-          <p class="trat__card-tagline">Tensionamento + estimulação de colágeno endógeno</p>
+          <h3 class="trat__card-name">Revitalização</h3>
+          <p class="trat__card-tagline">Reposição de nutrientes + estimulação celular profunda</p>
           <div class="trat__card-overlay">
             <p class="trat__card-desc">
-              Tecnologia de calor profundo que estimula a produção natural
-              de colágeno e elastina. Efeito lifting progressivo sem
-              procedimento invasivo. Recomendado em séries de 6 a 10 sessões.
+              Protocolo que repõe ativos essenciais à pele, restaurando
+              luminosidade, elasticidade e vitalidade. Resultado
+              visível desde a primeira sessão.
             </p>
             <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
           </div>
           <div class="trat__card-body">
             <div class="trat__card-body-inner">
-              Estimulação de colágeno por calor profundo. Efeito lifting
-              progressivo, recomendado em séries de 6–10 sessões.
-              <br>
-              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+              Reposição de ativos que restaura luminosidade e vitalidade.
+              Resultado visível desde a primeira sessão.
+              <br><a href="#contato" class="trat__card-body-cta">Agendar →</a>
             </div>
           </div>
         </div>
@@ -1586,22 +1587,21 @@
         <div class="trat__card">
           <span class="trat__card-num">04</span>
           <div class="trat__card-line"></div>
-          <h3 class="trat__card-name">Drenagem Linfática</h3>
-          <p class="trat__card-tagline">Técnica Vodder + manobras de pressão gradual</p>
+          <h3 class="trat__card-name">Tratamentos para Manchas</h3>
+          <p class="trat__card-tagline">Despigmentação + uniformização do tom</p>
           <div class="trat__card-overlay">
             <p class="trat__card-desc">
-              Manobras manuais suaves que estimulam o sistema linfático,
-              reduzem retenção de líquidos e modulam processos inflamatórios.
-              Indicado em pós-operatório, gravidez e rotina preventiva.
+              Combinação de ativos despigmentantes e tecnologia de precisão
+              para tratar manchas de origem hormonal, solar ou
+              pós-inflamatória com segurança e eficácia.
             </p>
             <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
           </div>
           <div class="trat__card-body">
             <div class="trat__card-body-inner">
-              Manobras manuais que estimulam o sistema linfático e reduzem
-              retenção de líquidos. Indicado em pós-op e rotina preventiva.
-              <br>
-              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+              Ativos despigmentantes para manchas hormonais, solares ou
+              pós-inflamatórias. Resultado progressivo e seguro.
+              <br><a href="#contato" class="trat__card-body-cta">Agendar →</a>
             </div>
           </div>
         </div>
@@ -1610,30 +1610,98 @@
         <div class="trat__card">
           <span class="trat__card-num">05</span>
           <div class="trat__card-line"></div>
-          <h3 class="trat__card-name">Microagulhamento</h3>
-          <p class="trat__card-tagline">Indução de colágeno + ativos de alta concentração</p>
+          <h3 class="trat__card-name">Linhas de Expressão</h3>
+          <p class="trat__card-tagline">Ativos antiage + estimulação de colágeno endógeno</p>
           <div class="trat__card-overlay">
             <p class="trat__card-desc">
-              Microlesões controladas que ativam os mecanismos naturais de
-              reparo da pele e potencializam a absorção de ativos. Indicado
-              para cicatrizes, manchas e rejuvenescimento global.
+              Protocolos não invasivos que suavizam linhas de expressão
+              e promovem firmeza, com resultados progressivos,
+              naturais e duradouros.
             </p>
             <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
           </div>
           <div class="trat__card-body">
             <div class="trat__card-body-inner">
-              Microlesões controladas que ativam o reparo natural da pele.
-              Indicado para cicatrizes, manchas e rejuvenescimento.
-              <br>
-              <a href="#contato" class="trat__card-body-cta">Agendar →</a>
+              Suavização não invasiva de linhas de expressão com
+              firmeza e resultados progressivos.
+              <br><a href="#contato" class="trat__card-body-cta">Agendar →</a>
             </div>
           </div>
         </div>
 
-        <!-- 06 — featured full-width -->
+        <!-- 06 -->
+        <div class="trat__card">
+          <span class="trat__card-num">06</span>
+          <div class="trat__card-line"></div>
+          <h3 class="trat__card-name">Microagulhamento</h3>
+          <p class="trat__card-tagline">Indução de colágeno + ativos de alta concentração</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Microlesões controladas que ativam os mecanismos naturais
+              de reparo da pele e potencializam a absorção de ativos.
+              Indicado para cicatrizes, manchas e rejuvenescimento.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Indução de colágeno e absorção potencializada de ativos.
+              Indicado para cicatrizes, manchas e rejuvenescimento.
+              <br><a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 -->
+        <div class="trat__card">
+          <span class="trat__card-num">07</span>
+          <div class="trat__card-line"></div>
+          <h3 class="trat__card-name">Drenagem Linfática</h3>
+          <p class="trat__card-tagline">Técnica Vodder + manobras de pressão gradual</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Manobras manuais suaves que estimulam o sistema linfático,
+              reduzem retenção de líquidos e modulam processos inflamatórios.
+              Indicado em pós-operatório e rotina preventiva.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Estimulação do sistema linfático para reduzir retenção
+              e inflamação. Ideal em pós-op e rotina preventiva.
+              <br><a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 -->
+        <div class="trat__card">
+          <span class="trat__card-num">08</span>
+          <div class="trat__card-line"></div>
+          <h3 class="trat__card-name">Clareamento Íntimo e Axilar</h3>
+          <p class="trat__card-tagline">Despigmentação localizada + ativos dermocosméticos</p>
+          <div class="trat__card-overlay">
+            <p class="trat__card-desc">
+              Tratamento seguro e eficaz para uniformizar o tom em regiões
+              íntimas e axilares, com protocolo exclusivo desenvolvido
+              para pele sensível.
+            </p>
+            <a href="#contato" class="trat__card-cta">Agendar este protocolo</a>
+          </div>
+          <div class="trat__card-body">
+            <div class="trat__card-body-inner">
+              Uniformização segura do tom em regiões íntimas e axilares,
+              com protocolo para pele sensível.
+              <br><a href="#contato" class="trat__card-body-cta">Agendar →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 — featured full-width -->
         <div class="trat__card trat__card--featured">
           <div class="trat__feat-left">
-            <span class="trat__card-num">06</span>
+            <span class="trat__card-num">09</span>
             <div class="trat__card-line"></div>
             <h3 class="trat__card-name">Protocolo Personalizado</h3>
             <p class="trat__feat-tagline">Avaliação completa + combinação de técnicas sob medida</p>
