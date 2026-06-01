@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Laís Nayélli — Esteticista e Cosmetóloga. Protocolos estéticos de precisão para resultados reais. Agende sua avaliação.">
-  <title>Laís Nayélli — Esteticista &amp; Cosmetóloga</title>
+  <meta name="description" content="Laís Nayélli — Esteticista e Cosmetóloga em Curitiba. Protocolos estéticos de precisão para resultados reais. Agende sua avaliação.">
+  <title>Laís Nayélli — Esteticista &amp; Cosmetóloga em Curitiba</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://laisnayelli.com.br/">
 
   <!-- Open Graph / Social sharing -->
   <meta property="og:type"        content="website">
-  <meta property="og:title"       content="Laís Nayélli — Esteticista &amp; Cosmetóloga">
+  <meta property="og:url"         content="https://laisnayelli.com.br/">
+  <meta property="og:title"       content="Laís Nayélli — Esteticista &amp; Cosmetóloga em Curitiba">
   <meta property="og:description" content="Protocolos estéticos de precisão para resultados reais. Agende sua avaliação.">
-  <meta property="og:image"       content="assets/photo-portrait.jpg">
+  <meta property="og:image"       content="https://laisnayelli.com.br/assets/photo-portrait.jpg">
   <meta property="og:locale"      content="pt_BR">
   <meta name="theme-color"        content="#1C1A17">
+
+  <!-- Preload hero image — reduz LCP -->
+  <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2154,6 +2161,49 @@
       .form__submit { width: 100%; justify-content: center; }
     }
   </style>
+
+  <!-- Schema.org: BeautySalon / LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["BeautySalon", "LocalBusiness"],
+    "name": "Laís Nayélli — Esteticista & Cosmetóloga",
+    "description": "Protocolos estéticos de precisão para resultados reais. Especialista em saúde da pele, tratamentos corporais e bem-estar em Curitiba.",
+    "url": "https://laisnayelli.com.br/",
+    "telephone": "+5577998726665",
+    "image": "https://laisnayelli.com.br/assets/photo-portrait.jpg",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Curitiba",
+      "addressRegion": "PR",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "addressCountry": "BR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/estetica.laisnayelli",
+      "https://wa.me/5577998726665"
+    ],
+    "hasMap": "https://maps.google.com/?q=Curitiba,PR",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+5577998726665",
+      "contactType": "customer service",
+      "availableLanguage": "Portuguese"
+    }
+  }
+  </script>
 </head>
 <body>
 
