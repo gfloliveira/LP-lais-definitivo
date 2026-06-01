@@ -2987,7 +2987,7 @@
 
       // Eyebrow → Headline as one sequential timeline
       gsap.timeline({
-        scrollTrigger: { trigger: '.contato', start: 'top 60%', toggleActions: tog }
+        scrollTrigger: { trigger: '.contato', start: 'top 75%', toggleActions: tog }
       })
         .to('.contato__eyebrow-text', { y: '0%', duration: 1.0, ease: 'power4.out' })
         .to('.contato__headline', { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, '-=0.5');
@@ -2995,19 +2995,19 @@
       // Form fields stagger
       gsap.to('.form__field', {
         opacity: 1, y: 0, duration: 0.9, stagger: 0.15, ease: 'power3.out',
-        scrollTrigger: { trigger: '.contato__form', start: 'top 62%', toggleActions: tog }
+        scrollTrigger: { trigger: '.contato__form', start: 'top 75%', toggleActions: tog }
       });
 
       // Submit button
       gsap.to('.form__submit', {
         opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.form__submit', start: 'top 70%', toggleActions: tog }
+        scrollTrigger: { trigger: '.form__submit', start: 'top 78%', toggleActions: tog }
       });
 
       // WhatsApp block desliza da direita
       gsap.to('.contato__wa', {
         opacity: 1, x: 0, duration: 1.2, ease: 'power3.out',
-        scrollTrigger: { trigger: '.contato__body', start: 'top 62%', toggleActions: tog }
+        scrollTrigger: { trigger: '.contato__body', start: 'top 75%', toggleActions: tog }
       });
     }
 
@@ -3018,7 +3018,7 @@
 
       // Header: eyebrow line → text → title → counter, single timeline
       gsap.timeline({
-        scrollTrigger: { trigger: '.result', start: 'top 60%', toggleActions: tog }
+        scrollTrigger: { trigger: '.result', start: 'top 75%', toggleActions: tog }
       })
         .to('.result__eyebrow-line', { scaleX: 1, duration: 1.0, ease: 'power3.out' })
         .to('.result__eyebrow-text', { opacity: 1, duration: 0.9, ease: 'power2.out' }, '-=0.5')
@@ -3029,7 +3029,7 @@
         // Mobile: slides aparecem em stagger vertical
         gsap.from('.result__slide', {
           opacity: 0, y: 48, duration: 1.0, stagger: 0.18, ease: 'power3.out',
-          scrollTrigger: { trigger: '.result__track', start: 'top 62%', toggleActions: 'play none none none' }
+          scrollTrigger: { trigger: '.result__track', start: 'top 72%', toggleActions: 'play none none none' }
         });
         return;
       }
@@ -3072,7 +3072,7 @@
 
       // Eyebrow → Headline as one sequential timeline
       gsap.timeline({
-        scrollTrigger: { trigger: '.trat__header', start: 'top 60%', toggleActions: tog }
+        scrollTrigger: { trigger: '.trat__header', start: 'top 75%', toggleActions: tog }
       })
         .to('.trat__eyebrow-text',    { y: '0%', duration: 1.0, ease: 'power4.out' })
         .to('.trat__headline-inner',  { y: '0%', duration: 1.3, stagger: 0.12, ease: 'power4.out' }, '-=0.5');
@@ -3080,25 +3080,25 @@
       // Sub fade
       gsap.to('.trat__sub', {
         opacity: 1, y: 0, duration: 1.0, ease: 'power3.out',
-        scrollTrigger: { trigger: '.trat__sub', start: 'top 65%', toggleActions: tog }
+        scrollTrigger: { trigger: '.trat__sub', start: 'top 75%', toggleActions: tog }
       });
 
       // Cards stagger — CSS sets initial state (opacity:0, translateY:32px)
       gsap.to('.trat__card', {
         opacity: 1, y: 0, duration: 1.0, stagger: 0.14, ease: 'power3.out',
-        scrollTrigger: { trigger: '.trat__grid', start: 'top 62%', toggleActions: tog }
+        scrollTrigger: { trigger: '.trat__grid', start: 'top 72%', toggleActions: tog }
       });
 
       // Linhas douradas — scaleX 0→1, stagger suave (same trigger as cards)
       gsap.to('.trat__card-line', {
         scaleX: 1, duration: 0.9, stagger: 0.14, ease: 'power3.out',
-        scrollTrigger: { trigger: '.trat__grid', start: 'top 62%', toggleActions: tog }
+        scrollTrigger: { trigger: '.trat__grid', start: 'top 72%', toggleActions: tog }
       });
 
       // Strip fade
       gsap.to('.trat__strip', {
         opacity: 1, y: 0, duration: 1.0, ease: 'power3.out',
-        scrollTrigger: { trigger: '.trat__strip', start: 'top 65%', toggleActions: tog }
+        scrollTrigger: { trigger: '.trat__strip', start: 'top 75%', toggleActions: tog }
       });
 
       // Mobile: accordion por tap
@@ -3133,7 +3133,7 @@
         { opacity: 0, filter: 'blur(16px)', scale: 1.04, transformOrigin: 'center center' },
         {
           opacity: 1, filter: 'blur(0px)', scale: 1, duration: 1.6, ease: 'power3.out',
-          scrollTrigger: { trigger: '.sobre__media', start: 'top 58%', toggleActions: tog }
+          scrollTrigger: { trigger: '.sobre__media', start: 'top 68%', toggleActions: tog }
         }
       );
 
@@ -3146,12 +3146,12 @@
       // Linha decorativa — height reveal, ligeiramente depois da foto
       gsap.to('.sobre__deco-line', {
         height: '90%', duration: 1.5, ease: 'power3.out',
-        scrollTrigger: { trigger: '.sobre__media', start: 'top 55%', toggleActions: tog }
+        scrollTrigger: { trigger: '.sobre__media', start: 'top 68%', toggleActions: tog }
       });
 
       // Eyebrow → Headline as one sequential timeline
       gsap.timeline({
-        scrollTrigger: { trigger: '.sobre__content', start: 'top 60%', toggleActions: tog }
+        scrollTrigger: { trigger: '.sobre__content', start: 'top 75%', toggleActions: tog }
       })
         .to('.sobre__eyebrow-text',   { y: '0%', duration: 1.0, ease: 'power4.out' })
         .to('.sobre__headline-inner', { y: '0%', duration: 1.3, stagger: 0.12, ease: 'power4.out' }, '-=0.5');
@@ -3159,19 +3159,19 @@
       // Bio desliza da direita (x:0) além de subir
       gsap.to('.sobre__bio', {
         opacity: 1, y: 0, x: 0, duration: 1.2, ease: 'power3.out',
-        scrollTrigger: { trigger: '.sobre__bio', start: 'top 65%', toggleActions: tog }
+        scrollTrigger: { trigger: '.sobre__bio', start: 'top 75%', toggleActions: tog }
       });
 
       // Pull quote desliza da direita
       gsap.to('.sobre__quote', {
         opacity: 1, y: 0, x: 0, duration: 1.2, ease: 'power3.out',
-        scrollTrigger: { trigger: '.sobre__quote', start: 'top 65%', toggleActions: tog }
+        scrollTrigger: { trigger: '.sobre__quote', start: 'top 75%', toggleActions: tog }
       });
 
       // Credentials stagger
       gsap.to('.sobre__credential', {
         opacity: 1, y: 0, duration: 0.9, stagger: 0.13, ease: 'power3.out',
-        scrollTrigger: { trigger: '.sobre__credentials', start: 'top 65%', toggleActions: tog }
+        scrollTrigger: { trigger: '.sobre__credentials', start: 'top 75%', toggleActions: tog }
       });
 
       // Stats — fade in + contador numérico
@@ -3179,7 +3179,7 @@
       gsap.to('.sobre__stat', {
         opacity: 1, y: 0, duration: 1.0, stagger: 0.18, ease: 'power3.out',
         scrollTrigger: {
-          trigger: '.sobre__stats', start: 'top 62%', toggleActions: tog,
+          trigger: '.sobre__stats', start: 'top 72%', toggleActions: tog,
           onEnter() {
             if (countersStarted) return;
             countersStarted = true;
@@ -3203,13 +3203,13 @@
       // Colunas entram em stagger suave
       gsap.to('.footer__inner > div', {
         opacity: 1, y: 0, duration: 1.0, stagger: 0.18, ease: 'power3.out',
-        scrollTrigger: { trigger: '.footer', start: 'top 70%', toggleActions: tog }
+        scrollTrigger: { trigger: '.footer', start: 'top 78%', toggleActions: tog }
       });
 
       // Rodapé legal aparece por último
       gsap.to('.footer__bottom', {
         opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
-        scrollTrigger: { trigger: '.footer__bottom', start: 'top 80%', toggleActions: tog }
+        scrollTrigger: { trigger: '.footer__bottom', start: 'top 82%', toggleActions: tog }
       });
     }
 
