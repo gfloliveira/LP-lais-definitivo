@@ -6,6 +6,14 @@
   <meta name="description" content="Laís Nayélli — Esteticista e Cosmetóloga. Protocolos estéticos de precisão para resultados reais. Agende sua avaliação.">
   <title>Laís Nayélli — Esteticista &amp; Cosmetóloga</title>
 
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Laís Nayélli — Esteticista &amp; Cosmetóloga">
+  <meta property="og:description" content="Protocolos estéticos de precisão para resultados reais. Agende sua avaliação.">
+  <meta property="og:image"       content="assets/photo-portrait.jpg">
+  <meta property="og:locale"      content="pt_BR">
+  <meta name="theme-color"        content="#1C1A17">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -244,6 +252,7 @@
       flex-shrink: 0;
       transform: scaleX(0);
       transform-origin: left;
+      will-change: transform;
     }
 
     .hero__eyebrow-text {
@@ -300,6 +309,7 @@
       transform: scaleX(0);
       transform-origin: left;
       margin-top: 3px;
+      will-change: transform;
     }
 
     .hero__sub {
@@ -718,6 +728,7 @@
         transparent
       );
       z-index: 2;
+      will-change: height;
     }
 
     .sobre__photo-wrap {
@@ -1104,6 +1115,7 @@
       margin-bottom: 20px;
       transform: scaleX(0);
       transform-origin: left;
+      will-change: transform;
     }
 
     .trat__card-name {
@@ -1417,6 +1429,7 @@
       background: var(--color-gold);
       transform: scaleX(0);
       transform-origin: left;
+      will-change: transform;
     }
 
     .result__eyebrow-text {
@@ -1481,6 +1494,10 @@
       height: 100%;
       display: grid;
       grid-template-columns: 62fr 38fr;
+    }
+
+    @media (max-width: 768px) {
+      .result__slide { opacity: 0; transform: translateY(48px); }
     }
 
     .result__slide-photo-wrap {
@@ -1586,6 +1603,7 @@
       background: var(--color-gold);
       transform-origin: left;
       transform: scaleX(0);
+      will-change: transform;
     }
 
     .result__hint {
@@ -3042,6 +3060,8 @@
       const slides  = document.querySelectorAll('.result__slide');
       const n       = slides.length;
 
+      if (!inner || !track || n === 0) return;
+
       const dist = () => track.scrollWidth - inner.offsetWidth;
 
       gsap.timeline({
@@ -3185,6 +3205,7 @@
             countersStarted = true;
             document.querySelectorAll('.sobre__stat-number').forEach(el => {
               const target = parseInt(el.dataset.target, 10);
+              if (!target || isNaN(target)) return;
               const proxy = { val: 0 };
               gsap.to(proxy, {
                 val: target, duration: 2, ease: 'power2.out',
