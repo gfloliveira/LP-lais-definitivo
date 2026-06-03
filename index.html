@@ -23,7 +23,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -614,6 +614,58 @@
     .nav__drawer.is-open a:nth-child(4) { transition-delay: 0.20s; }
     .nav__drawer a:hover,
     .nav__drawer a.is-active { color: var(--color-gold); }
+
+    /* ─── CREDIT BAR ────────────────────────────────────────────── */
+    .credit-bar {
+      background: #090807;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .credit-label {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.28);
+    }
+    .credit-dot {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.55rem;
+      line-height: 1;
+    }
+    .credit-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+      animation: aura-breathe 3.2s ease-in-out infinite;
+    }
+    @keyframes aura-breathe {
+      0%, 100% {
+        text-shadow:
+          0 0 6px  rgba(255, 255, 255, 1),
+          0 0 18px rgba(255, 255, 255, 0.75),
+          0 0 40px rgba(210, 130, 255, 0.85),
+          0 0 80px rgba(170,  70, 255, 0.55),
+          0 0 130px rgba(130,  30, 255, 0.3);
+      }
+      50% {
+        text-shadow:
+          0 0 3px  rgba(255, 255, 255, 0.55),
+          0 0 9px  rgba(255, 255, 255, 0.3),
+          0 0 20px rgba(210, 130, 255, 0.35),
+          0 0 45px rgba(170,  70, 255, 0.2),
+          0 0 70px rgba(130,  30, 255, 0.1);
+      }
+    }
+    @media (max-width: 768px) {
+      .credit-name { font-size: 2rem; }
+    }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────────── */
     @media (max-width: 1024px) {
@@ -2905,6 +2957,14 @@
       </div>
     </div>
   </footer>
+
+  <!-- Assinatura Aura -->
+  <div class="credit-bar">
+    <span class="credit-label">Code &amp; Design by</span>
+    <span class="credit-dot">•</span>
+    <span class="credit-name">Aura</span>
+  </div>
+
 
   <script>
     // ─── INIT ──────────────────────────────────────────────────────
