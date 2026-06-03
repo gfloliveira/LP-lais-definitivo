@@ -23,7 +23,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -617,50 +617,71 @@
 
     /* ─── CREDIT BAR ────────────────────────────────────────────── */
     .credit-bar {
-      background: #090807;
-      padding: 20px 32px;
+      background: #08070a;
+      padding: 22px 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+    }
+    /* Brilho radial atrás do nome */
+    .credit-bar::after {
+      content: '';
+      position: absolute;
+      right: calc(50% - 110px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 220px;
+      height: 100%;
+      background: radial-gradient(ellipse at center,
+        rgba(160, 100, 255, 0.13) 0%,
+        transparent 72%
+      );
+      pointer-events: none;
     }
     .credit-label {
       font-family: var(--font-sans);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 400;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.28);
+      color: rgba(255, 255, 255, 0.25);
     }
     .credit-dot {
-      color: rgba(255, 255, 255, 0.2);
-      font-size: 0.55rem;
-      line-height: 1;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(160, 110, 255, 0.7);
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(160, 110, 255, 0.5);
     }
     .credit-name {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.4rem;
+      font-family: 'Pinyon Script', cursive;
+      font-size: 2.5rem;
       font-weight: 400;
       color: #fff;
       line-height: 1;
-      animation: aura-breathe 3.2s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+      animation: aura-breathe 3.4s ease-in-out infinite;
     }
     @keyframes aura-breathe {
       0%, 100% {
         text-shadow:
-          0 0 6px  rgba(255, 255, 255, 1),
-          0 0 18px rgba(255, 255, 255, 0.75),
-          0 0 40px rgba(210, 130, 255, 0.85),
-          0 0 80px rgba(170,  70, 255, 0.55),
-          0 0 130px rgba(130,  30, 255, 0.3);
+          0 0 8px  rgba(255, 255, 255, 0.95),
+          0 0 22px rgba(255, 255, 255, 0.55),
+          0 0 50px rgba(200, 160, 255, 0.35),
+          0 0 90px rgba(160, 100, 255, 0.18);
       }
       50% {
         text-shadow:
-          0 0 3px  rgba(255, 255, 255, 0.55),
-          0 0 9px  rgba(255, 255, 255, 0.3),
-          0 0 20px rgba(210, 130, 255, 0.35),
-          0 0 45px rgba(170,  70, 255, 0.2),
-          0 0 70px rgba(130,  30, 255, 0.1);
+          0 0 4px  rgba(255, 255, 255, 0.5),
+          0 0 12px rgba(255, 255, 255, 0.2),
+          0 0 28px rgba(200, 160, 255, 0.12),
+          0 0 50px rgba(160, 100, 255, 0.06);
       }
     }
     @media (max-width: 768px) {
@@ -2959,11 +2980,11 @@
   </footer>
 
   <!-- Assinatura Aura -->
-  <div class="credit-bar">
+  <a class="credit-bar" href="https://aura.xyz.br" target="_blank" rel="noopener" aria-label="Code &amp; Design by Aura">
     <span class="credit-label">Code &amp; Design by</span>
-    <span class="credit-dot">•</span>
+    <span class="credit-dot" aria-hidden="true"></span>
     <span class="credit-name">Aura</span>
-  </div>
+  </a>
 
 
   <script>
