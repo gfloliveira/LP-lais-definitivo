@@ -2909,6 +2909,10 @@
   <script>
     // ─── INIT ──────────────────────────────────────────────────────
 
+    // Sempre inicia do topo — impede browser de restaurar scroll ao atualizar
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
     // Aguarda DOM + defer scripts (garante GSAP/Lenis disponíveis)
     function onReady(fn) {
       if (document.readyState === 'loading') {
